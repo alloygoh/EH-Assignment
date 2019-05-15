@@ -10,13 +10,13 @@ def listener(folder):
     i = inotify.adapters.InotifyTree(folder)
     for event in i.event_gen(yield_nones = False):
         (_,status,path,filename) = event
-        if "IN_CREATE" in status:
+        if "IN_CLOSE_WRITE" in status:
             final_path = path+'/'+filename
             p = Process(target=send_file,args=(final_path,))
             p.start()
 def send_file(path):
     ftp = FTP()
-    ftp.connect('127.0.0.1', 2121)
+    ftp.connect('192.168.1.194', 2121)
     ftp.login('anonymous','password')
     #ftp.cwd('/sambashare') # ftp root
     fp = open(path, 'rb')
