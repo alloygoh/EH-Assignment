@@ -1,6 +1,8 @@
 # EH Assignment
 
-## TODO
+This repo contains the code and guide on how to replicate the attack for my school's assignment on Ethical Hacking.
+
+## Running the FTP Server
 
 Run the ftp server using `python -m pyftpdlib -w`
 
