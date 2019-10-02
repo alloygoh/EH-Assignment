@@ -5,6 +5,7 @@ import inotify.adapters
 from multiprocessing import Process, Manager
 from ftplib import FTP
 import os
+import sys
 
 def listener(folder):
     i = inotify.adapters.InotifyTree(folder)
@@ -23,14 +24,9 @@ def send_file(path):
     ftp.storbinary('STOR %s' % os.path.basename(path), fp, 1024)
     fp.close()
 def main():
-    p = Process(target=listener,args=("/home/seed/Desktop",))
+    p = Process(target=listener,args=(sys.argv[1],))
     p.start()
 
 
-'''
-control_devices.append(device.partition)
-p = Process(target=listener,args=(device.mountpoint,device.partition,control_devices,))
-p.start()
-'''
 if __name__ == "__main__":
     main()
