@@ -14,4 +14,4 @@ Run the ftp server using `python -m pyftpdlib -w`
 
 Scroll to the bottom and add the following line (after all the #'s):
 
-`@reboot python /bin/your_script.py &`
+`@reboot python3 /bin/your_script.py &`
